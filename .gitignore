@@ -212,4 +212,8 @@ config/token.pickle
 backup/local_backup/*
 logs/*
 __pycache__/
+<<<<<<< HEAD
 *.pyc
+=======
+*.pyc
+>>>>>>> dcbb00b (update project)
