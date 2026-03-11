@@ -172,7 +172,7 @@ generate_healthcare_data.py
 
 <b>Adharv Shyam</b><br>
 
-<a href="mailto:adharvshyam.ai@gmail.com">your-email@example.com</a>
+<a href="mailto:adharvshyam.ai@gmail.com">adharvshyam.ai@gmail.com</a>
 
 </td>
 </tr>
