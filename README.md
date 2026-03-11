@@ -164,5 +164,16 @@ generate_healthcare_data.py
 
 ## Author
 
-Adharv Shyam  
-BCA Final Year Project
+<table>
+<tr>
+<td align="center">
+
+<img src="assets/adharv.jpg" width="150px"><br>
+
+<b>Adharv Shyam</b><br>
+
+<a href="mailto:adharvshyam.ai@gmail.com">your-email@example.com</a>
+
+</td>
+</tr>
+</table>
