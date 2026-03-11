@@ -53,6 +53,33 @@ Multi-Cloud-Healthcare-Backup
 - Logging system for backup operations
 - Modular Python architecture
 
+## System Architecture
+              Healthcare Dataset
+                (CSV Files)
+                       │
+                       ▼
+               Backup Engine (Python)
+                       │
+         ┌─────────────┴─────────────┐
+         │                           │
+         ▼                           ▼
+   Local Backup Folder         Cloud Backup
+   (backup/local_backup)       (Google Drive API)
+         │                           │
+         │                           │
+   Data Integrity Check        Upload Manager
+      (SHA256 Hash)                 │
+         │                           │
+         └─────────────┬─────────────┘
+                       ▼
+               Retry Mechanism
+                       │
+                       ▼
+               Failover System
+                       │
+                       ▼
+             Backup Logs + Dashboard
+
 ## Learning Outcomes
 This project helps understand:
 - Cloud computing reliability
