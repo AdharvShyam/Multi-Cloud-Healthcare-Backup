@@ -21,27 +21,30 @@ The system implements redundancy and failover mechanisms by storing healthcare f
 
 ## Project Structure
 
+```
 Multi-Cloud-Healthcare-Backup
 │
 ├── backup
-│ └── local_backup
+│   └── local_backup
 │
 ├── config
 │
 ├── data
-│ └── healthcare_data
+│   └── healthcare_data
 │
 ├── logs
 │
 ├── src
-│ ├── backup_engine.py
-│ ├── cloud_uploader.py
-│ ├── file_manager.py
-│ └── logger.py
+│   ├── backup_engine.py
+│   ├── cloud_uploader.py
+│   ├── file_manager.py
+│   └── logger.py
 │
 ├── main.py
 ├── README.md
-
+├── LICENSE
+└── .gitignore
+```
 
 ## Key Features
 - Automated healthcare file backup
