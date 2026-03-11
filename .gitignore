@@ -208,3 +208,11 @@ __marimo__/
 
 config/credentials.json
 config/token.pickle
+
+backup/local_backup/*
+logs/backup_log.txt
+
+__pycache__/
+*.pyc
+
+data/healthcare_data/*.csv
