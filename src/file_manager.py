@@ -1,4 +1,5 @@
 import os
+import hashlib
 
 
 def get_all_files(folder_path):
@@ -25,3 +26,22 @@ if __name__ == "__main__":
 
     for f in files:
         print(f)
+
+        import hashlib
+
+
+def get_file_hash(file_path):
+
+    sha256 = hashlib.sha256()
+
+    with open(file_path, "rb") as f:
+
+        while True:
+            data = f.read(4096)
+
+            if not data:
+                break
+
+            sha256.update(data)
+
+    return sha256.hexdigest()
