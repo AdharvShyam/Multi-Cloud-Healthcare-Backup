@@ -210,10 +210,10 @@ config/credentials.json
 config/token.pickle
 
 backup/local_backup/*
+!backup/local_backup/placeholder.txt
+
 logs/*
+!logs/placeholder.txt
+
 __pycache__/
-<<<<<<< HEAD
 *.pyc
-=======
-*.pyc
->>>>>>> dcbb00b (update project)
