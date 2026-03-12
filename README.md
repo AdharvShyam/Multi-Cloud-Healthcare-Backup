@@ -23,32 +23,7 @@ The system stores healthcare files in both local storage and cloud storage to ma
 
 ## Project Structure
 
-```
-MultiCloud-Healthcare-Backup
-│
-├── backup
-│   └── local_backup
-│
-├── config
-│
-├── data
-│   └── healthcare_data
-│
-├── logs
-│
-├── src
-│   ├── backup_engine.py
-│   ├── cloud_uploader.py
-│   ├── file_manager.py
-│   ├── logger.py
-│   ├── dashboard.py
-│   └── report_manager.py
-│
-├── main.py
-├── README.md
-├── LICENSE
-└── .gitignore
-```
+![Project Structure](assets/project_structure.png)
 
 ## Key Features
 
