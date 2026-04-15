@@ -217,3 +217,5 @@ logs/*
 
 __pycache__/
 *.pyc
+
+config/aws_config.json
