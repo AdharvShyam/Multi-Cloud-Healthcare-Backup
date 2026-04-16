@@ -2,7 +2,8 @@ import os
 import shutil
 
 from src.file_manager import get_all_files, get_file_hash
-from src.cloud_uploader import upload_file
+from src.cloud_uploader import upload_file  # Google Drive
+from src.s3_uploader import upload_to_s3   # AWS S3
 from src.logger import log_event
 from src.report_manager import BackupReport
 
@@ -25,7 +26,6 @@ def perform_backup():
     for file_path in files:
 
         report.total_files += 1
-
         file_name = os.path.basename(file_path)
 
         backup_path = os.path.join(
@@ -34,14 +34,17 @@ def perform_backup():
         )
 
         try:
-
+            # ---------------------------
             # LOCAL BACKUP
+            # ---------------------------
             shutil.copy(file_path, backup_path)
 
             log_event(f"Local backup successful: {file_name}")
             report.local_success += 1
 
-            # DATA INTEGRITY CHECK (SHA256)
+            # ---------------------------
+            # INTEGRITY CHECK (SHA256)
+            # ---------------------------
             original_hash = get_file_hash(file_path)
             backup_hash = get_file_hash(backup_path)
 
@@ -50,53 +53,64 @@ def perform_backup():
             else:
                 log_event(f"Integrity check FAILED for {file_name}")
 
-            # FILE SIZE VERIFICATION
-            original_size = os.path.getsize(file_path)
-            backup_size = os.path.getsize(backup_path)
-
-            if original_size == backup_size:
+            # ---------------------------
+            # SIZE VERIFICATION
+            # ---------------------------
+            if os.path.getsize(file_path) == os.path.getsize(backup_path):
                 log_event(f"Backup verification passed for {file_name}")
             else:
                 log_event(f"Backup verification FAILED for {file_name}")
 
-            # CLOUD BACKUP
+            # ---------------------------
+            # CLOUD BACKUP FLAGS
+            # ---------------------------
+            google_success = False
+            s3_success = False
+
+            # ---------------------------
+            # GOOGLE DRIVE BACKUP
+            # ---------------------------
             try:
-
                 upload_file(file_path)
-
-                log_event(f"Cloud backup successful: {file_name}")
+                log_event(f"Google Drive backup successful: {file_name}")
                 report.cloud_success += 1
+                google_success = True
 
-            except Exception as cloud_error:
-
+            except Exception as drive_error:
                 log_event(
-                    f"Cloud backup failed for {file_name}: {cloud_error}"
+                    f"Google Drive failed for {file_name}: {drive_error}"
                 )
 
-                # RETRY CLOUD UPLOAD
-                try:
+            # ---------------------------
+            # AWS S3 BACKUP
+            # ---------------------------
+            try:
+                upload_to_s3(file_path)
+                log_event(f"AWS S3 backup successful: {file_name}")
+                report.cloud_success += 1
+                s3_success = True
 
-                    upload_file(file_path)
+            except Exception as s3_error:
+                log_event(
+                    f"AWS S3 failed for {file_name}: {s3_error}"
+                )
 
-                    log_event(
-                        f"Retry upload successful for {file_name}"
-                    )
-
-                    report.retry_success += 1
-
-                except Exception:
-
-                    log_event(
-                        f"Failover triggered for {file_name}. "
-                        f"Data retained in local backup."
-                    )
-
-                    report.failover_count += 1
+            # ---------------------------
+            # FAILOVER
+            # ---------------------------
+            if not google_success and not s3_success:
+                log_event(
+                    f"Failover triggered for {file_name}. "
+                    f"Data retained locally."
+                )
+                report.failover_count += 1
 
         except Exception as backup_error:
-
             log_event(
                 f"Backup FAILED for {file_name}: {backup_error}"
             )
 
+    # ---------------------------
+    # FINAL REPORT
+    # ---------------------------
     report.print_report()
