@@ -23,6 +23,7 @@ The system stores healthcare files in both local storage and cloud storage to ma
 
 ## Project Structure
 
+```text
 Multi-Cloud Healthcare Backup System
 │
 ├── config/
