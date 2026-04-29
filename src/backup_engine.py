@@ -7,7 +7,6 @@ from src.s3_uploader import upload_to_s3   # AWS S3
 from src.logger import log_event
 from src.report_manager import BackupReport
 
-
 DATA_FOLDER = "data/healthcare_data"
 LOCAL_BACKUP_FOLDER = "backup/local_backup"
 
