@@ -39,33 +39,8 @@ The system stores healthcare files in both local storage and cloud storage to ma
 
 ## System Architecture
 
-```
-Healthcare Dataset
-(CSV Files)
-│
-▼
-Backup Engine (Python)
-│
-┌───────────────┴───────────────┐
-│                               │
-▼                               ▼
-Local Backup Folder            Cloud Backup
-(backup/local_backup)       (Google Drive API)
-│                               │
-│                               │
-Data Integrity Check        Upload Manager
-(SHA256 Hash)                     │
-│                               │
-└───────────────┬───────────────┘
-▼
-Retry Mechanism
-│
-▼
-Failover System
-│
-▼
-Backup Logs + Dashboard
-```
+(assets/System Architecture.png)
+...
 
 ## How the Backup System Works
 
@@ -142,8 +117,6 @@ generate_healthcare_data.py
 <table>
 <tr>
 <td align="center">
-
-<img src="assets/adharv.jpg" width="150px"><br>
 
 <b>Adharv Shyam</b><br>
 
