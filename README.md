@@ -39,7 +39,7 @@ The system stores healthcare files in both local storage and cloud storage to ma
 
 ## System Architecture
 
-(assets/System Architecture.png)
+![System Architecture](assets/System Architecture.png)
 ...
 
 ## How the Backup System Works
