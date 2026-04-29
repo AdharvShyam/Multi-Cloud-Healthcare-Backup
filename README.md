@@ -23,6 +23,8 @@ The system stores healthcare files in both local storage and cloud storage to ma
 
 ## Project Structure
 
+## Project Structure
+
 ```text
 Multi-Cloud Healthcare Backup System
 │
@@ -62,7 +64,7 @@ Multi-Cloud Healthcare Backup System
 ├── README.md
 ├── LICENSE
 └── .gitignore
-
+```
 ## Key Features
 
 - Automatic backup of healthcare files  
