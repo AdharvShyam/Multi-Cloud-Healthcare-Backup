@@ -23,7 +23,44 @@ The system stores healthcare files in both local storage and cloud storage to ma
 
 ## Project Structure
 
-![Project Structure](assets/project_structure.png)
+Multi-Cloud Healthcare Backup System
+│
+├── config/
+│   ├── config.json
+│   ├── credentials.json
+│   └── token.pickle
+│
+├── data/
+│   └── healthcare_data/
+│       ├── patients.csv
+│       ├── appointments.csv
+│       ├── lab_reports.csv
+│       └── prescriptions.csv
+│
+├── backup/
+│   └── local_backup/
+│       ├── patients.csv
+│       ├── appointments.csv
+│       ├── lab_reports.csv
+│       └── prescriptions.csv
+│
+├── logs/
+│   ├── backup_log.txt
+│   └── placeholder.txt
+│
+├── src/
+│   ├── backup_engine.py
+│   ├── file_manager.py
+│   ├── cloud_uploader.py
+│   ├── s3_uploader.py
+│   ├── logger.py
+│   └── report_manager.py
+│
+├── main.py
+├── generate_healthcare_data.py
+├── README.md
+├── LICENSE
+└── .gitignore
 
 ## Key Features
 
@@ -39,9 +76,7 @@ The system stores healthcare files in both local storage and cloud storage to ma
 
 ## System Architecture
 
-![Uploading System Architecture.png…]()
-
-...
+![System Architecture](assets/System%20Architecture.png)
 
 ## How the Backup System Works
 
@@ -113,16 +148,3 @@ The dataset is automatically generated using the script:
 generate_healthcare_data.py
 ```
 
-## Author
-
-<table>
-<tr>
-<td align="center">
-
-<b>Adharv Shyam</b><br>
-
-<a href="mailto:adharvshyam.ai@gmail.com">adharvshyam.ai@gmail.com</a>
-
-</td>
-</tr>
-</table>
